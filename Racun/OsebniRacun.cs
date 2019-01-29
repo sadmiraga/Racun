@@ -29,13 +29,14 @@ namespace Racun
                 imeLastnika = inputStringImeLastnika;
             }
 
-            //constructor (stanje, limit, imeLasntika, obrestnaMera)
-            public OsebniRacun(double inputDoubleStanje, double inputDoubleLimit, string inputStringImeLastnika, double inputDoubleObrestnaMera)
+            //constructor (stanje, limit, imeLasntika,varcevalni, obrestnaMera)
+            public OsebniRacun(double inputDoubleStanje, double inputDoubleLimit, string inputStringImeLastnika,bool inputVarcevalni, double inputDoubleObrestnaMera)
             {
                 stanje = inputDoubleStanje;
                 limit = inputDoubleLimit;
                 imeLastnika = inputStringImeLastnika;
                 obrestnaMera = inputDoubleObrestnaMera;
+                varcevalni = inputVarcevalni;
             }
 
 
