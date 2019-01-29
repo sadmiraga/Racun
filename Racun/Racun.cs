@@ -47,29 +47,19 @@ namespace Racun
             }
 
         //METHODS
-
+        //ERROR BIG SEX
             //dvig
             public bool dvig (double iznosZaPodignuti)
             {
-                //provjeriti da li je uopste moguce podginuti novac 
-
-                
-                if(iznosZaPodignuti > stanje)
-                {   //ide u minus
-                    //provjeriti da li je predjen limit
-                    if ((iznosZaPodignuti - stanje) > limit)
-                    {
-                        stanje = -(iznosZaPodignuti-stanje);
-                        return true;
-                    } else
-                    {
-                        return false;
-                    }
+                if(stanje-iznosZaPodignuti < 0)
+                {
+                    return false;    
                 } else
-                {   //moguce podignut novac
+                {
                     stanje -= iznosZaPodignuti;
                     return true;
                 }
+
             }
 
             //polog

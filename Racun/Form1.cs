@@ -19,6 +19,14 @@ namespace Racun
 
         public int vrstaRacuna;
 
+         //RACUNI
+             //OSEBNI RACUN
+             OsebniRacun osebniRacun = new OsebniRacun();
+            //VALUTNI RACUN
+            ValutniRacun valutniRacun = new ValutniRacun();
+            //POSLOVNI RACUN 
+            PoslovniRacun poslovniRacun = new PoslovniRacun();
+
         //vnesite pravo vrednost
         public void inputError()
         {
@@ -142,8 +150,17 @@ namespace Racun
                         varcevalniInput = false;
                     }
 
+                    //POMOCU CONSTRUCTORA
+                    //OsebniRacun user = new OsebniRacun(stanje, limit, ime, varcevalniInput, obrestnaMera);
 
-                    OsebniRacun user = new OsebniRacun(stanje, limit, ime, varcevalniInput, obrestnaMera);
+                    //GETTING DATA INTO OBJECT
+                    osebniRacun.stanje = stanje;
+                    osebniRacun.limit = limit;
+                    osebniRacun.imeLastnika = ime;
+                    osebniRacun.varcevalni = varcevalniInput;
+                    osebniRacun.obrestnaMera = obrestnaMera;
+                    
+                    
 
                     //sakrit prikaz pravljenja racuna 
                     sakrij();
@@ -156,7 +173,7 @@ namespace Racun
                     osebniFunctionsGroupBox.Visible = true;
 
                     //prikazat stanje 
-                    stanjeLabel.Text = "Stanje: " + user.stanje.ToString();
+                    stanjeLabel.Text = "Stanje: " + osebniRacun.stanje.ToString();
 
                 } else
                 {
@@ -184,8 +201,16 @@ namespace Racun
                             double limit = Convert.ToDouble(inputLimit.Text);
                             string primarnaValuta = inputPrimarnaValuta.Text;
 
-                            //kreirat racun
-                            ValutniRacun user = new  ValutniRacun(stanje,limit,inputIme,primarnaValuta);
+                         //CONSTRUCTOR
+                            //ValutniRacun user = new  ValutniRacun(stanje,limit,inputIme,primarnaValuta);
+
+                            //GETTING DATA INTO OBJECT
+                            valutniRacun.stanje = stanje;
+                            valutniRacun.limit = limit;
+                            valutniRacun.imeLastnika = inputIme;
+                            valutniRacun.primarnaValuta = primarnaValuta;
+                         
+                            
                             
                             //prikazat funkcije za Valutni racun
                             groupBox1.Visible = false;
@@ -194,7 +219,7 @@ namespace Racun
                             pologGroupBox.Visible = true;
 
                             //prikaz stanja
-                            stanjeLabel.Text = "Stanje: "+ user.stanje.ToString() + " "+user.primarnaValuta;
+                            stanjeLabel.Text = "Stanje: "+ valutniRacun.stanje.ToString() + " "+valutniRacun.primarnaValuta;
 
 
 
@@ -226,11 +251,19 @@ namespace Racun
                         string imePodjetja = inputNazivPodjetja.Text;
                         string typePodjetja = inputTipPodjetja.Text;
 
-                        //napravi novi user 
-                        PoslovniRacun user = new PoslovniRacun(stanje,limit,imeLastnika,imePodjetja,typePodjetja);
+                        //PREKO CONSTRUCTORA 
+                        //PoslovniRacun user = new PoslovniRacun(stanje,limit,imeLastnika,imePodjetja,typePodjetja);
+
+                        //GETTING DATA INTO OBJECT
+                        poslovniRacun.stanje = stanje;
+                        poslovniRacun.limit = limit;
+                        poslovniRacun.imeLastnika = imeLastnika;
+                        poslovniRacun.nazivPodjetja = imePodjetja;
+                        poslovniRacun.tipPodjetja = typePodjetja;
+
 
                         //prikazat stanje
-                        stanjeLabel.Text = "Stanje: " + user.stanje.ToString();
+                        stanjeLabel.Text = "Stanje: " + poslovniRacun.stanje.ToString();
 
                         //prikazat funckije moguce 
                         dvigGroupBox.Visible = true;
@@ -274,7 +307,137 @@ namespace Racun
         //DVIG FUNCTION
         private void dvigButton_Click(object sender, EventArgs e)
         {
-           //dvig function
+            //prvo vidjet koji je tip racuna 
+            if(vrstaRacuna == 0)
+            {
+                //osebni dvig
+                int svota = Convert.ToInt32(inputDvig.Text);
+
+                if(osebniRacun.dvig(svota) == true)
+                {
+                    //prikazat novo stanje racuna 
+                    stanjeLabel.Text = "Stanje: "+ osebniRacun.stanje.ToString();
+                } else
+                {
+                    MessageBox.Show("Ni mozno dvignuti denar");
+                }
+                
+
+            } else if(vrstaRacuna == 1)
+            {
+                //valutni dvig
+                int svota = Convert.ToInt32(inputDvig.Text);
+
+                if (valutniRacun.dvig(svota) == true)
+                {
+                    //prikazat novo stanje racuna 
+                    stanjeLabel.Text = "Stanje: "+ valutniRacun.stanje.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Ni mozno dvignuti denar");
+                }
+
+            } else if(vrstaRacuna == 2)
+            {
+                //poslovni dvig
+                int svota = Convert.ToInt32(inputDvig.Text);
+
+                if (poslovniRacun.dvig(svota) == true)
+                {
+                    //prikazat novo stanje racuna 
+                    stanjeLabel.Text = "Stanje: "+ poslovniRacun.stanje.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Ni mozno dvignuti denar");
+                }
+            }
+        }
+
+        //POLOG
+        private void pologButton_Click(object sender, EventArgs e)
+        {
+            //provjeriti koji je racun u pitanju 
+            if(vrstaRacuna == 0)
+            {   //OSEBNI
+                //pokupit vrijednosti
+                int iznos = Convert.ToInt32(inputPolog.Text);
+
+                //pozivanje funkcije
+                osebniRacun.polog(iznos);
+
+                //prikaz novog stanja
+                stanjeLabel.Text = "Stanje: "+ osebniRacun.stanje.ToString();
+
+            } else if(vrstaRacuna == 1)
+            {   //VALUTNI
+                //pokupit vrijednosti
+                int iznos = Convert.ToInt32(inputPolog.Text);
+
+                //pozivanje funkcije
+                valutniRacun.polog(iznos);
+
+                //prikaz novog stanja
+                stanjeLabel.Text = "Stanje: " + valutniRacun.stanje.ToString() + valutniRacun.primarnaValuta.ToString();
+
+            } else if(vrstaRacuna == 2)
+            {   //POSLOVNI
+                //pokupit vrijednosti
+                int iznos = Convert.ToInt32(inputPolog.Text);
+
+                //pozivanje funkcije
+                poslovniRacun.polog(iznos);
+
+                //prikaz novog stanja
+                stanjeLabel.Text = "Stanje: " + poslovniRacun.stanje.ToString();
+            }
+        }
+        
+        //LIKVIDNO PODJETJE
+        private void likvidnoButton_Click(object sender, EventArgs e)
+        {
+            if (poslovniRacun.Likvidno() == true)
+            {
+                MessageBox.Show("Podjetje je likvidno");
+            } else
+            {
+                MessageBox.Show("Podjetje NI likvidno");
+            }
+        }
+            
+        //ZAMENJAJ VALUTO
+        private void zamenjajValutoButton_Click(object sender, EventArgs e)
+        {
+            //get data from textbox
+            double tecaj = Convert.ToDouble(inputTecaj.Text);
+
+            //call function
+            valutniRacun.zamenjajValuto(tecaj);
+
+            //new data display 
+            stanjeLabel.Text = valutniRacun.stanje.ToString();
+        }
+
+        //PRIHRANEK
+        private void prihranekButton_Click(object sender, EventArgs e)
+        {
+            //pokupit vrijednost iz textboxa
+            double povprecnoMesecnoStanje = Convert.ToDouble(inputPrihranek.Text);
+
+            //funkcija
+            double prihranek = osebniRacun.IzracunajLetniPrihranek(povprecnoMesecnoStanje);
+
+            //ispis
+            MessageBox.Show(prihranek.ToString());
+            
+
+        }
+
+        //NASTAVI OBRESTNO MERO
+        private void povecajObrestnoMeroButton_Click(object sender, EventArgs e)
+        {
+            osebniRacun.NastaviObrestnoMero();
         }
     }
 }

@@ -59,21 +59,21 @@
             this.stanjeLabel = new System.Windows.Forms.Label();
             this.dvigGroupBox = new System.Windows.Forms.GroupBox();
             this.dvigButton = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.inputDvig = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.pologGroupBox = new System.Windows.Forms.GroupBox();
             this.pologButton = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.inputPolog = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.osebniFunctionsGroupBox = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.povecajObrestnoMeroButton = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.prihranekButton = new System.Windows.Forms.Button();
+            this.inputPrihranek = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.valutniFunctionsGroupBox = new System.Windows.Forms.GroupBox();
             this.zamenjajValutoButton = new System.Windows.Forms.Button();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.inputTecaj = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.poslovniFunctionsGroupBox = new System.Windows.Forms.GroupBox();
             this.likvidnoButton = new System.Windows.Forms.Button();
@@ -387,7 +387,7 @@
             // dvigGroupBox
             // 
             this.dvigGroupBox.Controls.Add(this.dvigButton);
-            this.dvigGroupBox.Controls.Add(this.textBox7);
+            this.dvigGroupBox.Controls.Add(this.inputDvig);
             this.dvigGroupBox.Controls.Add(this.label12);
             this.dvigGroupBox.Location = new System.Drawing.Point(450, 35);
             this.dvigGroupBox.Name = "dvigGroupBox";
@@ -407,12 +407,12 @@
             this.dvigButton.UseVisualStyleBackColor = true;
             this.dvigButton.Click += new System.EventHandler(this.dvigButton_Click);
             // 
-            // textBox7
+            // inputDvig
             // 
-            this.textBox7.Location = new System.Drawing.Point(67, 36);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(176, 22);
-            this.textBox7.TabIndex = 5;
+            this.inputDvig.Location = new System.Drawing.Point(67, 36);
+            this.inputDvig.Name = "inputDvig";
+            this.inputDvig.Size = new System.Drawing.Size(176, 22);
+            this.inputDvig.TabIndex = 5;
             // 
             // label12
             // 
@@ -427,7 +427,7 @@
             // pologGroupBox
             // 
             this.pologGroupBox.Controls.Add(this.pologButton);
-            this.pologGroupBox.Controls.Add(this.textBox8);
+            this.pologGroupBox.Controls.Add(this.inputPolog);
             this.pologGroupBox.Controls.Add(this.label13);
             this.pologGroupBox.Location = new System.Drawing.Point(450, 160);
             this.pologGroupBox.Name = "pologGroupBox";
@@ -445,13 +445,14 @@
             this.pologButton.TabIndex = 17;
             this.pologButton.Text = "Polog";
             this.pologButton.UseVisualStyleBackColor = true;
+            this.pologButton.Click += new System.EventHandler(this.pologButton_Click);
             // 
-            // textBox8
+            // inputPolog
             // 
-            this.textBox8.Location = new System.Drawing.Point(67, 33);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(176, 22);
-            this.textBox8.TabIndex = 16;
+            this.inputPolog.Location = new System.Drawing.Point(67, 33);
+            this.inputPolog.Name = "inputPolog";
+            this.inputPolog.Size = new System.Drawing.Size(176, 22);
+            this.inputPolog.TabIndex = 16;
             // 
             // label13
             // 
@@ -465,10 +466,10 @@
             // 
             // osebniFunctionsGroupBox
             // 
-            this.osebniFunctionsGroupBox.Controls.Add(this.button6);
+            this.osebniFunctionsGroupBox.Controls.Add(this.povecajObrestnoMeroButton);
             this.osebniFunctionsGroupBox.Controls.Add(this.label15);
-            this.osebniFunctionsGroupBox.Controls.Add(this.button5);
-            this.osebniFunctionsGroupBox.Controls.Add(this.textBox9);
+            this.osebniFunctionsGroupBox.Controls.Add(this.prihranekButton);
+            this.osebniFunctionsGroupBox.Controls.Add(this.inputPrihranek);
             this.osebniFunctionsGroupBox.Controls.Add(this.label14);
             this.osebniFunctionsGroupBox.Location = new System.Drawing.Point(450, 305);
             this.osebniFunctionsGroupBox.Name = "osebniFunctionsGroupBox";
@@ -478,14 +479,15 @@
             this.osebniFunctionsGroupBox.Text = "Osebni račun";
             this.osebniFunctionsGroupBox.Visible = false;
             // 
-            // button6
+            // povecajObrestnoMeroButton
             // 
-            this.button6.Location = new System.Drawing.Point(136, 101);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(117, 25);
-            this.button6.TabIndex = 20;
-            this.button6.Text = "Povečaj";
-            this.button6.UseVisualStyleBackColor = true;
+            this.povecajObrestnoMeroButton.Location = new System.Drawing.Point(136, 101);
+            this.povecajObrestnoMeroButton.Name = "povecajObrestnoMeroButton";
+            this.povecajObrestnoMeroButton.Size = new System.Drawing.Size(117, 25);
+            this.povecajObrestnoMeroButton.TabIndex = 20;
+            this.povecajObrestnoMeroButton.Text = "Povečaj";
+            this.povecajObrestnoMeroButton.UseVisualStyleBackColor = true;
+            this.povecajObrestnoMeroButton.Click += new System.EventHandler(this.povecajObrestnoMeroButton_Click);
             // 
             // label15
             // 
@@ -497,21 +499,22 @@
             this.label15.Text = "Obr. mera:";
             this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // button5
+            // prihranekButton
             // 
-            this.button5.Location = new System.Drawing.Point(136, 67);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(117, 25);
-            this.button5.TabIndex = 18;
-            this.button5.Text = "Prihranek";
-            this.button5.UseVisualStyleBackColor = true;
+            this.prihranekButton.Location = new System.Drawing.Point(136, 67);
+            this.prihranekButton.Name = "prihranekButton";
+            this.prihranekButton.Size = new System.Drawing.Size(117, 25);
+            this.prihranekButton.TabIndex = 18;
+            this.prihranekButton.Text = "Prihranek";
+            this.prihranekButton.UseVisualStyleBackColor = true;
+            this.prihranekButton.Click += new System.EventHandler(this.prihranekButton_Click);
             // 
-            // textBox9
+            // inputPrihranek
             // 
-            this.textBox9.Location = new System.Drawing.Point(9, 70);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(111, 22);
-            this.textBox9.TabIndex = 15;
+            this.inputPrihranek.Location = new System.Drawing.Point(9, 70);
+            this.inputPrihranek.Name = "inputPrihranek";
+            this.inputPrihranek.Size = new System.Drawing.Size(111, 22);
+            this.inputPrihranek.TabIndex = 15;
             // 
             // label14
             // 
@@ -526,7 +529,7 @@
             // valutniFunctionsGroupBox
             // 
             this.valutniFunctionsGroupBox.Controls.Add(this.zamenjajValutoButton);
-            this.valutniFunctionsGroupBox.Controls.Add(this.textBox10);
+            this.valutniFunctionsGroupBox.Controls.Add(this.inputTecaj);
             this.valutniFunctionsGroupBox.Controls.Add(this.label16);
             this.valutniFunctionsGroupBox.Location = new System.Drawing.Point(450, 465);
             this.valutniFunctionsGroupBox.Name = "valutniFunctionsGroupBox";
@@ -544,13 +547,14 @@
             this.zamenjajValutoButton.TabIndex = 21;
             this.zamenjajValutoButton.Text = "Zamenjaj valuto";
             this.zamenjajValutoButton.UseVisualStyleBackColor = true;
+            this.zamenjajValutoButton.Click += new System.EventHandler(this.zamenjajValutoButton_Click);
             // 
-            // textBox10
+            // inputTecaj
             // 
-            this.textBox10.Location = new System.Drawing.Point(9, 62);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(111, 22);
-            this.textBox10.TabIndex = 21;
+            this.inputTecaj.Location = new System.Drawing.Point(9, 62);
+            this.inputTecaj.Name = "inputTecaj";
+            this.inputTecaj.Size = new System.Drawing.Size(111, 22);
+            this.inputTecaj.TabIndex = 21;
             // 
             // label16
             // 
@@ -581,6 +585,7 @@
             this.likvidnoButton.TabIndex = 0;
             this.likvidnoButton.Text = "Podjetje likvidno?";
             this.likvidnoButton.UseVisualStyleBackColor = true;
+            this.likvidnoButton.Click += new System.EventHandler(this.likvidnoButton_Click);
             // 
             // Form1
             // 
@@ -650,21 +655,21 @@
         private System.Windows.Forms.Label stanjeLabel;
         private System.Windows.Forms.GroupBox dvigGroupBox;
         private System.Windows.Forms.Button dvigButton;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox inputDvig;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox pologGroupBox;
         private System.Windows.Forms.Button pologButton;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox inputPolog;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox osebniFunctionsGroupBox;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox inputPrihranek;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button povecajObrestnoMeroButton;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button prihranekButton;
         private System.Windows.Forms.GroupBox valutniFunctionsGroupBox;
         private System.Windows.Forms.Button zamenjajValutoButton;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox inputTecaj;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox poslovniFunctionsGroupBox;
         private System.Windows.Forms.Button likvidnoButton;
